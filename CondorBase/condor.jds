@@ -1,0 +1,10 @@
+executable=../optimize.py
+universe=vanilla
+output=job.out
+error=job.err
+log=job.log
+getenv=true
+request_cpus=24
+request_memory=40GB
+request_gpus=1
+queue 1

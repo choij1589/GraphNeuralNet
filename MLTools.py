@@ -1,10 +1,12 @@
+import os
 import numpy as np
 import torch
 import torch.nn.functional as F
 from torch.nn import Sequential, Linear, ReLU, SELU
-from torch_geometric.nn import global_mean_pool
+from torch_geometric.nn import knn_graph, global_mean_pool
 from torch_geometric.nn import GCNConv, GraphConv
-from torch_geometric.nn import MessagePassing, GraphNorm
+from torch_geometric.nn import GraphNorm
+from torch_geometric.nn import MessagePassing
 from torch_geometric.data import Data, InMemoryDataset
 from Scripts.DataFormat import Particle
 from Scripts.DataFormat import get_leptons, get_jets
@@ -128,30 +130,46 @@ class MyDataset(InMemoryDataset):
 
 
 # Modules
-class EdgeConv(MessagePassing):
-    def __init__(self, in_channels, out_channels):
-        super().__init__(aggr='max')
-        self.mlp = Sequential(Linear(2 * in_channels, out_channels), SELU(),
-                              Linear(out_channels, out_channels), SELU(),
-                              Linear(out_channels, out_channels))
+class GCN(torch.nn.Module):
+		def __init__(self, num_features, num_classes, hidden_channels):
+				super(GCN, self).__init__()
+				self.gn0 = GraphNorm(num_features)
+				self.conv1 = GCNConv(num_features, hidden_channels)
+				self.gn1 = GraphNorm(hidden_channels)
+				self.conv2 = GCNConv(hidden_channels, hidden_channels)
+				self.gn2 = GraphNorm(hidden_channels)
+				self.conv3 = GCNConv(hidden_channels, hidden_channels)
+				self.dense = Linear(hidden_channels, hidden_channels)
+				self.output = Linear(hidden_channels, num_classes)
 
-    def forward(self, x, edge_index):
-        return self.propagate(edge_index, x=x)
+		def forward(self, x, edge_index, batch):
+				# Convolution layers
+				x = self.gn0(x)
+				x = F.relu(self.conv1(x, edge_index))
+				x = self.gn1(x)
+				x = F.relu(self.conv2(x, edge_index))
+				x = self.gn2(x)
+				x = F.relu(self.conv3(x, edge_index))
 
-    def message(self, x_i, x_j):
-        tmp = torch.cat([x_i, x_j - x_i], dim=1)
-        return self.mlp(tmp)
+				# readout layers
+				x = global_mean_pool(x, batch)
 
+				# dense layers
+				x = F.dropout(x, p=0.5, training=self.training)
+				x = F.relu(self.dense(x))
+				x = self.output(x)
 
-class ParticleNet(torch.nn.Module):
+				return F.softmax(x, dim=1)
+
+class GNN(torch.nn.Module):
     def __init__(self, num_features, num_classes, hidden_channels):
-        super(ParticleNet, self).__init__()
+        super(GNN, self).__init__()
         self.gn0 = GraphNorm(num_features)
-        self.conv1 = EdgeConv(num_features, hidden_channels)
+        self.conv1 = GraphConv(num_features, hidden_channels)
         self.gn1 = GraphNorm(hidden_channels)
-        self.conv2 = EdgeConv(hidden_channels, hidden_channels)
+        self.conv2 = GraphConv(hidden_channels, hidden_channels)
         self.gn2 = GraphNorm(hidden_channels)
-        self.conv3 = EdgeConv(hidden_channels, hidden_channels)
+        self.conv3 = GraphConv(hidden_channels, hidden_channels)
         self.dense = Linear(hidden_channels, hidden_channels)
         self.output = Linear(hidden_channels, num_classes)
 
@@ -173,3 +191,117 @@ class ParticleNet(torch.nn.Module):
         x = self.output(x)
 
         return F.softmax(x, dim=1)
+
+
+class EdgeConv(MessagePassing):
+    def __init__(self, in_channels, out_channels):
+        super().__init__(aggr='max')
+        self.mlp = Sequential(Linear(2 * in_channels, out_channels), SELU(),
+                              Linear(out_channels, out_channels), SELU(),
+                              Linear(out_channels, out_channels))
+
+    def forward(self, x, edge_index):
+        return self.propagate(edge_index, x=x)
+
+    def message(self, x_i, x_j):
+        tmp = torch.cat([x_i, x_j - x_i], dim=1)
+        return self.mlp(tmp)
+
+class DynamicEdgeConv(EdgeConv):
+		def __init__(self, in_channels, out_channels, k=4):
+				super().__init__(in_channels, out_channels)
+				self.k = k
+
+		def forward(self, x, edge_index=None, batch=None):
+				if edge_index is None:
+						edge_index = knn_graph(x, self.k, batch, loop=False, flow=self.flow)
+				return super().forward(x, edge_index)
+
+class ParticleNet(torch.nn.Module):
+    def __init__(self, num_features, num_classes, hidden_channels, dynamic=False):
+        super(ParticleNet, self).__init__()
+        self.dynamic = dynamic
+        self.gn0 = GraphNorm(num_features)
+        self.conv1 = DynamicEdgeConv(num_features, hidden_channels)
+        self.gn1 = GraphNorm(hidden_channels)
+        self.conv2 = DynamicEdgeConv(hidden_channels, hidden_channels)
+        self.gn2 = GraphNorm(hidden_channels)
+        self.conv3 = DynamicEdgeConv(hidden_channels, hidden_channels)
+        self.dense = Linear(hidden_channels, hidden_channels)
+        self.output = Linear(hidden_channels, num_classes)
+
+    def forward(self, x, edge_index, batch):
+        # Convolution layers
+        x = self.gn0(x)
+        x = F.relu(self.conv1(x, edge_index))
+        x = self.gn1(x)
+        x = F.relu(self.conv2(x)) if self.dynamic else F.relu(self.conv2(x, edge_index))
+        x = self.gn2(x)
+        x = F.relu(self.conv3(x)) if self.dynamic else F.relu(self.conv3(x, edge_index))
+
+        # readout layers
+        x = global_mean_pool(x, batch)
+
+        # dense layers
+        x = F.dropout(x, p=0.5, training=self.training)
+        x = F.relu(self.dense(x))
+        x = self.output(x)
+
+        return F.softmax(x, dim=1)
+
+class EarlyStopping():
+		def __init__(self, patience=7, delta=0, path="./checkpoint.pt"):
+				self.patience = patience
+				self.counter = 0
+				self.best_score = None
+				self.early_stop = False
+				self.val_loss_min = np.Inf
+				self.delta = delta
+				self.path = path
+				if not os.path.exists(os.path.dirname(path)): 
+						os.makedirs(os.path.dirname(path))
+
+		def update(self, val_loss, model):
+				score = -val_loss
+				if self.best_score is None:
+						self.best_score = score
+						self.save_checkpt(val_loss, model)
+				elif score < self.best_score + self.delta:
+						self.counter += 1
+						print(f"EarlyStopping counter: {self.counter} out of {self.patience}")
+						if self.counter >= self.patience:
+								self.early_stop = True
+				else:
+						self.best_score = score
+						self.save_checkpt(val_loss, model)
+						self.counter = 0
+
+		def save_checkpt(self, val_loss, model):
+				torch.save(model.state_dict(), self.path)
+				self.val_loss_min = val_loss
+
+class History():
+		def __init__(self, name):
+				self.name = name
+				self.train_loss = []
+				self.train_acc = []
+				self.val_loss = []
+				self.val_acc = []
+
+		def update(self, train_loss, train_acc, val_loss, val_acc):
+				self.train_loss.append(train_loss)
+				self.train_acc.append(train_acc)
+				self.val_loss.append(val_loss)
+				self.val_acc.append(val_acc)
+
+		def train_loss(self):
+				return np.array(self.train_loss)
+
+		def train_acc(self):
+				return np.array(self.train_acc)
+
+		def val_loss(self):
+				return np.array(self.val_loss)
+
+		def val_acc(self):
+				return np.array(self.val_acc)
