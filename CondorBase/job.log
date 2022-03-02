@@ -11,3 +11,171 @@
 	475  -  MemoryUsage of job (MB)
 	486176  -  ResidentSetSize of job (KB)
 ...
+006 (118871.000.000) 2022-03-02 13:41:46 Image size of job updated: 89468536
+	3767  -  MemoryUsage of job (MB)
+	3856832  -  ResidentSetSize of job (KB)
+...
+006 (118871.000.000) 2022-03-02 13:46:46 Image size of job updated: 89509488
+	3768  -  MemoryUsage of job (MB)
+	3857676  -  ResidentSetSize of job (KB)
+...
+006 (118871.000.000) 2022-03-02 13:51:46 Image size of job updated: 90286556
+	3770  -  MemoryUsage of job (MB)
+	3859748  -  ResidentSetSize of job (KB)
+...
+006 (118871.000.000) 2022-03-02 13:56:47 Image size of job updated: 90344048
+	3829  -  MemoryUsage of job (MB)
+	3920400  -  ResidentSetSize of job (KB)
+...
+006 (118871.000.000) 2022-03-02 14:01:47 Image size of job updated: 90344048
+	3829  -  MemoryUsage of job (MB)
+	3920456  -  ResidentSetSize of job (KB)
+...
+006 (118871.000.000) 2022-03-02 14:06:48 Image size of job updated: 100047728
+	3842  -  MemoryUsage of job (MB)
+	3934000  -  ResidentSetSize of job (KB)
+...
+006 (118871.000.000) 2022-03-02 14:11:48 Image size of job updated: 100047728
+	3844  -  MemoryUsage of job (MB)
+	3936132  -  ResidentSetSize of job (KB)
+...
+006 (118871.000.000) 2022-03-02 14:13:17 Image size of job updated: 100047728
+	3844  -  MemoryUsage of job (MB)
+	3936232  -  ResidentSetSize of job (KB)
+...
+004 (118871.000.000) 2022-03-02 14:13:17 Job was evicted.
+	(0) CPU times
+		Usr 0 03:02:07, Sys 0 00:31:55  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	5836  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :     0.81       24        24 
+	   Disk (KB)            :   112           7    127640 
+	   Gpus (Average)       :     0.12        1         1 "GPU-ebb73fb1"
+	   GpusMemory (MB)      :  4014                       
+	   Memory (MB)          :  3844       40960     40960 
+...
+009 (118871.000.000) 2022-03-02 14:13:17 Job was aborted.
+	via condor_rm (by user choij)
+...
+000 (118872.000.000) 2022-03-02 14:48:02 Job submitted from host: <172.30.1.200:9618?addrs=172.30.1.200-9618&alias=tamsa2.snu.ac.kr&noUDP&sock=schedd_3154_f5cb>
+...
+040 (118872.000.000) 2022-03-02 14:48:19 Started transferring input files
+	Transferring to host: <172.30.1.111:9618?addrs=172.30.1.111-9618&alias=n11&noUDP&sock=slot1_1_12917_f1e6_164>
+...
+040 (118872.000.000) 2022-03-02 14:48:19 Finished transferring input files
+...
+001 (118872.000.000) 2022-03-02 14:48:20 Job executing on host: <172.30.1.111:9618?addrs=172.30.1.111-9618&alias=n11&noUDP&sock=startd_12883_3eb2>
+...
+007 (118872.000.000) 2022-03-02 14:48:20 Shadow exception!
+	Error from slot1@n11: Failed to execute '/var/lib/condor/execute/dir_90945/condor_exec.exe': (errno=8: 'Exec format error')
+	0  -  Run Bytes Sent By Job
+	667  -  Run Bytes Received By Job
+...
+012 (118872.000.000) 2022-03-02 14:48:20 Job was held.
+	Error from slot1@n11: Failed to execute '/var/lib/condor/execute/dir_90945/condor_exec.exe': (errno=8: 'Exec format error')
+	Code 6 Subcode 8
+...
+009 (118872.000.000) 2022-03-02 14:50:05 Job was aborted.
+	via condor_rm (by user choij)
+...
+000 (118873.000.000) 2022-03-02 14:50:10 Job submitted from host: <172.30.1.200:9618?addrs=172.30.1.200-9618&alias=tamsa2.snu.ac.kr&noUDP&sock=schedd_3154_f5cb>
+...
+040 (118873.000.000) 2022-03-02 14:50:10 Started transferring input files
+	Transferring to host: <172.30.1.111:9618?addrs=172.30.1.111-9618&alias=n11&noUDP&sock=slot1_1_12917_f1e6_165>
+...
+040 (118873.000.000) 2022-03-02 14:50:10 Finished transferring input files
+...
+001 (118873.000.000) 2022-03-02 14:50:11 Job executing on host: <172.30.1.111:9618?addrs=172.30.1.111-9618&alias=n11&noUDP&sock=startd_12883_3eb2>
+...
+006 (118873.000.000) 2022-03-02 14:50:19 Image size of job updated: 3604
+	2  -  MemoryUsage of job (MB)
+	1896  -  ResidentSetSize of job (KB)
+...
+006 (118873.000.000) 2022-03-02 14:54:00 Image size of job updated: 65052
+	2  -  MemoryUsage of job (MB)
+	1896  -  ResidentSetSize of job (KB)
+...
+004 (118873.000.000) 2022-03-02 14:54:00 Job was evicted.
+	(0) CPU times
+		Usr 0 00:00:00, Sys 0 00:00:01  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	689  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :        0       24        24 
+	   Disk (KB)            :       53        1    127640 
+	   Gpus (Average)       :        0        1         1 "GPU-ebb73fb1"
+	   GpusMemory (MB)      :      311                    
+	   Memory (MB)          :        2    40960     40960 
+...
+009 (118873.000.000) 2022-03-02 14:54:00 Job was aborted.
+	via condor_rm (by user choij)
+...
+000 (118874.000.000) 2022-03-02 15:00:18 Job submitted from host: <172.30.1.200:9618?addrs=172.30.1.200-9618&alias=tamsa2.snu.ac.kr&noUDP&sock=schedd_3154_f5cb>
+...
+040 (118874.000.000) 2022-03-02 15:00:31 Started transferring input files
+	Transferring to host: <172.30.1.111:9618?addrs=172.30.1.111-9618&alias=n11&noUDP&sock=slot1_1_12917_f1e6_166>
+...
+040 (118874.000.000) 2022-03-02 15:00:31 Finished transferring input files
+...
+001 (118874.000.000) 2022-03-02 15:00:32 Job executing on host: <172.30.1.111:9618?addrs=172.30.1.111-9618&alias=n11&noUDP&sock=startd_12883_3eb2>
+...
+006 (118874.000.000) 2022-03-02 15:00:40 Image size of job updated: 4780
+	5  -  MemoryUsage of job (MB)
+	4700  -  ResidentSetSize of job (KB)
+...
+006 (118874.000.000) 2022-03-02 15:01:29 Image size of job updated: 36136
+	5  -  MemoryUsage of job (MB)
+	4700  -  ResidentSetSize of job (KB)
+...
+004 (118874.000.000) 2022-03-02 15:01:29 Job was evicted.
+	(0) CPU times
+		Usr 0 00:00:01, Sys 0 00:00:01  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	782  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :        0       24        24 
+	   Disk (KB)            :       53        1    127640 
+	   Gpus (Average)       :        0        1         1 "GPU-ebb73fb1"
+	   GpusMemory (MB)      :      311                    
+	   Memory (MB)          :        5    40960     40960 
+...
+009 (118874.000.000) 2022-03-02 15:01:29 Job was aborted.
+	via condor_rm (by user choij)
+...
+000 (118875.000.000) 2022-03-02 15:01:52 Job submitted from host: <172.30.1.200:9618?addrs=172.30.1.200-9618&alias=tamsa2.snu.ac.kr&noUDP&sock=schedd_3154_f5cb>
+...
+040 (118875.000.000) 2022-03-02 15:01:54 Started transferring input files
+	Transferring to host: <172.30.1.111:9618?addrs=172.30.1.111-9618&alias=n11&noUDP&sock=slot1_1_12917_f1e6_167>
+...
+040 (118875.000.000) 2022-03-02 15:01:54 Finished transferring input files
+...
+001 (118875.000.000) 2022-03-02 15:01:55 Job executing on host: <172.30.1.111:9618?addrs=172.30.1.111-9618&alias=n11&noUDP&sock=startd_12883_3eb2>
+...
+006 (118875.000.000) 2022-03-02 15:02:04 Image size of job updated: 36386560
+	1426  -  MemoryUsage of job (MB)
+	1459692  -  ResidentSetSize of job (KB)
+...
+006 (118875.000.000) 2022-03-02 15:05:19 Image size of job updated: 108447256
+	1426  -  MemoryUsage of job (MB)
+	1459700  -  ResidentSetSize of job (KB)
+...
+004 (118875.000.000) 2022-03-02 15:05:19 Job was evicted.
+	(0) CPU times
+		Usr 0 00:03:24, Sys 0 00:00:56  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	834  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :     0.04       24        24 
+	   Disk (KB)            :    88           1    127640 
+	   Gpus (Average)       :     0.03        1         1 "GPU-ebb73fb1"
+	   GpusMemory (MB)      :  5340                       
+	   Memory (MB)          :  1426       40960     40960 
+...
+009 (118875.000.000) 2022-03-02 15:05:19 Job was aborted.
+	via condor_rm (by user choij)
+...

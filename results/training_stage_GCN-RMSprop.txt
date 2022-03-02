@@ -1,0 +1,12 @@
+Start training GCN-RMSprop...[EPOCH 0]	Train Acc: 0.4948	Train Loss: 0.0033[EPOCH 0]	Valid Acc: 0.5100	Valid Loss: 0.0032
+[EPOCH 1]	Train Acc: 0.4941	Train Loss: 0.0033[EPOCH 1]	Valid Acc: 0.5100	Valid Loss: 0.0032
+[EPOCH 2]	Train Acc: 0.4948	Train Loss: 0.0033[EPOCH 2]	Valid Acc: 0.5100	Valid Loss: 0.0032
+[EPOCH 3]	Train Acc: 0.4947	Train Loss: 0.0033[EPOCH 3]	Valid Acc: 0.5100	Valid Loss: 0.0032
+[EPOCH 4]	Train Acc: 0.5053	Train Loss: 0.0032[EPOCH 4]	Valid Acc: 0.4900	Valid Loss: 0.0033
+[EPOCH 5]	Train Acc: 0.5053	Train Loss: 0.0032[EPOCH 5]	Valid Acc: 0.4900	Valid Loss: 0.0033
+[EPOCH 6]	Train Acc: 0.5053	Train Loss: 0.0032[EPOCH 6]	Valid Acc: 0.4900	Valid Loss: 0.0033
+[EPOCH 7]	Train Acc: 0.5053	Train Loss: 0.0032[EPOCH 7]	Valid Acc: 0.4900	Valid Loss: 0.0033
+[EPOCH 8]	Train Acc: 0.5053	Train Loss: 0.0032[EPOCH 8]	Valid Acc: 0.4900	Valid Loss: 0.0033
+[EPOCH 9]	Train Acc: 0.5053	Train Loss: 0.0032[EPOCH 9]	Valid Acc: 0.4900	Valid Loss: 0.0033
+[EPOCH 10]	Train Acc: 0.5053	Train Loss: 0.0032[EPOCH 10]	Valid Acc: 0.4900	Valid Loss: 0.0033
+Early stopping in epoch 10

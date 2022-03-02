@@ -1,6 +1,5 @@
-#!/usr/bin/env python
 import os, sys; sys.path.append("/data6/Users/choij/GraphNeuralNet")
-import asyncio
+import argparse
 from time import time
 from itertools import product
 
@@ -12,6 +11,16 @@ from MLTools import rtfile_to_datalist, MyDataset
 from MLTools import GCN, GNN, ParticleNet
 from MLTools import EarlyStopping, History
 from ROOT import TFile
+
+DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
+if DEVICE == 'cuda':
+		torch.backends.cudnn.benchmark = True
+		torch.backends.cudnn.enabled = True
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--model", "-m", default=None, required=True, type=str, help="model type")
+parser.add_argument("--optim", "-o", default=None, required=True, type=str, help="optimizer type")
+args = parser.parse_args()
 
 # get root files
 f_sig = TFile.Open("/data6/Users/choij/GraphNeuralNet/SelectorOutput/2017/Skim1E2Mu__/Selector_TTToHcToWA_AToMuMu_MHc130_MA90.root")
@@ -28,13 +37,11 @@ train_dataset = MyDataset(datalist[:10000])
 val_dataset = MyDataset(datalist[10000:11000])
 test_dataset = MyDataset(datalist[11000:])
 
-train_loader = DataLoader(train_dataset, batch_size=256, shuffle=True, num_workers=4)
-val_loader = DataLoader(val_dataset, batch_size=256, shuffle=False, num_workers=4)
-test_loader = DataLoader(test_dataset, batch_size=256, shuffle=False, num_workers=4)
+train_loader = DataLoader(train_dataset, batch_size=256, shuffle=True, num_workers=4, pin_memory=True)
+val_loader = DataLoader(val_dataset, batch_size=256, shuffle=False, num_workers=4, pin_memory=True)
+test_loader = DataLoader(test_dataset, batch_size=256, shuffle=False, num_workers=4, pin_memory=True)
 
 # Constants
-DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
-print(f"using {DEVICE}")
 num_features = train_dataset[0].num_node_features
 num_classes = train_dataset.num_classes
 hidden_channels = 256
@@ -125,45 +132,31 @@ def optimize(model, optimizer, title):
 		visualize_training_steps(history, path=f"/data6/Users/choij/GraphNeuralNet/results/training_stage_{title}.png")
 		f.close()
 
-async def wrapper(model_name, optimizer_name):
+def main():
 		### Initialize model and optimizer
-		if model_name == "GCN":
-				model = GCN(num_features, num_classes, hidden_channels).to(DEVICE)
-		elif model_name == "GNN":
-				model = GNN(num_features, num_classes, hidden_channels).to(DEVICE)
-		elif model_name == "ParticleNet":
-				model = ParticleNet(num_features, num_classes, hidden_channels).to(DEVICE)
-		else:
-				print(f"Wrong model name {model_name}!")
-				raise NameError
-		
-		if optimizer_name == "RMSprop":
-				optimizer = torch.optim.RMSprop(model.parameters(), lr=learning_rate)
-		elif optimizer_name == "Adam":
-				optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
-		elif optimizer_name == "Adadelta":
-				optimizer = torch.optim.Adadelta(model_parameters(), lr=learning_rate)
-		else:
-				print(f"Wrong optimizer name {optimizer_name}!")
-				raise NameError
+    if args.model == "GCN":
+        model = GCN(num_features, num_classes, hidden_channels).to(DEVICE)
+    elif args.model == "GNN":
+        model = GNN(num_features, num_classes, hidden_channels).to(DEVICE)
+    elif args.model == "ParticleNet":
+        model = ParticleNet(num_features, num_classes, hidden_channels).to(DEVICE)
+    else:
+        print(f"Wrong model name {args.model}!")
+        raise NameError
 
-		optimize(model, optimizer, title=f"{model_name}-{optimizer_name}")
+    if args.optim == "RMSprop":
+        optimizer = torch.optim.RMSprop(model.parameters(), lr=learning_rate)
+    elif args.optim == "Adam":
+        optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+    elif args.optim == "Adadelta":
+        optimizer = torch.optim.Adadelta(model_parameters(), lr=learning_rate)
+    else:
+        print(f"Wrong optimizer name {args.optim}!")
+        raise NameError
 
-		return f"{model_name}-{optimizer_name} done!"
+    optimize(model, optimizer, title=f"{args.model}-{args.optim}")
 
-async def main():
-		models = ["GCN", "GNN", "ParticleNet"]
-		optimizers = ["RMSprop", "Adam", "Adadelta"]
-
-		futures = [asyncio.ensure_future(wrapper(m, o)) for m, o in product(models, optimizers)]
-		results = await asyncio.gather(*futures)
-		print(results)
+    print(f"{model_name}-{optimizer_name} done!")
 
 if __name__ == "__main__":
-		begin = time()
-		loop = asyncio.get_event_loop()
-		loop.run_until_complete(main())
-		loop.close()
-		end = time()
-
-		print(f"{begin} - {end}")
+		main()

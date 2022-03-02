@@ -1,4 +1,4 @@
-executable=../optimize.py
+executable=../parallelize.py
 universe=vanilla
 output=job.out
 error=job.err
