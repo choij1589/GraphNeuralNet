@@ -234,11 +234,11 @@ class ParticleNet(torch.nn.Module):
     def forward(self, x, edge_index, batch):
         # Convolution layers
         x = self.gn0(x)
-        x = F.relu(self.conv1(x, edge_index))
+        x = self.conv1(x, edge_index)
         x = self.gn1(x)
-        x = F.relu(self.conv2(x)) if self.dynamic else F.relu(self.conv2(x, edge_index))
+        x = self.conv2(x) if self.dynamic else self.conv2(x, edge_index)
         x = self.gn2(x)
-        x = F.relu(self.conv3(x)) if self.dynamic else F.relu(self.conv3(x, edge_index))
+        x = self.conv3(x) if self.dynamic else self.conv3(x, edge_index)
 
         # readout layers
         x = global_mean_pool(x, batch)

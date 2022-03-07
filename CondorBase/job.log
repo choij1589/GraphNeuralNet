@@ -1,40 +1,44 @@
-000 (119178.000.000) 2022-03-07 13:39:44 Job submitted from host: <172.30.1.200:9618?addrs=172.30.1.200-9618&alias=tamsa2.snu.ac.kr&noUDP&sock=schedd_3154_f5cb>
+000 (119224.000.000) 2022-03-07 20:33:13 Job submitted from host: <172.30.1.200:9618?addrs=172.30.1.200-9618&alias=tamsa2.snu.ac.kr&noUDP&sock=schedd_3154_f5cb>
 ...
-040 (119178.000.000) 2022-03-07 13:39:44 Started transferring input files
-	Transferring to host: <172.30.1.111:9618?addrs=172.30.1.111-9618&alias=n11&noUDP&sock=slot1_1_12917_f1e6_337>
+040 (119224.000.000) 2022-03-07 20:33:23 Started transferring input files
+	Transferring to host: <172.30.1.111:9618?addrs=172.30.1.111-9618&alias=n11&noUDP&sock=slot1_1_12917_f1e6_338>
 ...
-040 (119178.000.000) 2022-03-07 13:39:44 Finished transferring input files
+040 (119224.000.000) 2022-03-07 20:33:23 Finished transferring input files
 ...
-001 (119178.000.000) 2022-03-07 13:39:45 Job executing on host: <172.30.1.111:9618?addrs=172.30.1.111-9618&alias=n11&noUDP&sock=startd_12883_3eb2>
+001 (119224.000.000) 2022-03-07 20:33:24 Job executing on host: <172.30.1.111:9618?addrs=172.30.1.111-9618&alias=n11&noUDP&sock=startd_12883_3eb2>
 ...
-006 (119178.000.000) 2022-03-07 13:39:54 Image size of job updated: 2550252
-	2484  -  MemoryUsage of job (MB)
-	2543564  -  ResidentSetSize of job (KB)
+006 (119224.000.000) 2022-03-07 20:33:33 Image size of job updated: 2450432
+	2389  -  MemoryUsage of job (MB)
+	2445796  -  ResidentSetSize of job (KB)
 ...
-006 (119178.000.000) 2022-03-07 13:44:55 Image size of job updated: 835728012
-	22750  -  MemoryUsage of job (MB)
-	23295164  -  ResidentSetSize of job (KB)
+006 (119224.000.000) 2022-03-07 20:38:34 Image size of job updated: 824373980
+	26703  -  MemoryUsage of job (MB)
+	27343388  -  ResidentSetSize of job (KB)
 ...
-040 (119178.000.000) 2022-03-07 13:53:10 Started transferring output files
+006 (119224.000.000) 2022-03-07 20:43:34 Image size of job updated: 824373980
+	26703  -  MemoryUsage of job (MB)
+	27343512  -  ResidentSetSize of job (KB)
 ...
-040 (119178.000.000) 2022-03-07 13:53:10 Finished transferring output files
+040 (119224.000.000) 2022-03-07 20:48:36 Started transferring output files
 ...
-005 (119178.000.000) 2022-03-07 13:53:10 Job terminated.
+040 (119224.000.000) 2022-03-07 20:48:36 Finished transferring output files
+...
+005 (119224.000.000) 2022-03-07 20:48:36 Job terminated.
 	(1) Normal termination (return value 0)
-		Usr 0 03:30:59, Sys 0 00:50:37  -  Run Remote Usage
+		Usr 0 04:02:18, Sys 0 01:01:01  -  Run Remote Usage
 		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
-		Usr 0 03:30:59, Sys 0 00:50:37  -  Total Remote Usage
+		Usr 0 04:02:18, Sys 0 01:01:01  -  Total Remote Usage
 		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
 	0  -  Run Bytes Sent By Job
 	606  -  Run Bytes Received By Job
 	0  -  Total Bytes Sent By Job
 	606  -  Total Bytes Received By Job
 	Partitionable Resources :    Usage  Request Allocated Assigned
-	   Cpus                 :     7.34       36        36 
-	   Disk (KB)            :    41           1    127640 
-	   Gpus (Average)       :     0.54        1         1 "GPU-ebb73fb1"
-	   GpusMemory (MB)      : 22488                       
-	   Memory (MB)          : 22750       51200     51200 
+	   Cpus                 :    13.33       36        36 
+	   Disk (KB)            :    74           1    127640 
+	   Gpus (Average)       :     0.59        1         1 "GPU-ebb73fb1"
+	   GpusMemory (MB)      : 23324                       
+	   Memory (MB)          : 26703       51200     51200 
 
-	Job terminated of its own accord at 2022-03-07T04:53:10Z.
+	Job terminated of its own accord at 2022-03-07T11:48:36Z.
 ...
