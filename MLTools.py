@@ -1,5 +1,6 @@
 import os
 import numpy as np
+import matplotlib.pyplot as plt
 import torch
 import torch.nn.functional as F
 from torch.nn import Sequential, Linear, ReLU, SELU
@@ -294,14 +295,39 @@ class History():
 				self.val_loss.append(val_loss)
 				self.val_acc.append(val_acc)
 
-		def train_loss(self):
+		def get_train_loss(self):
 				return np.array(self.train_loss)
 
-		def train_acc(self):
+		def get_train_acc(self):
 				return np.array(self.train_acc)
 
-		def val_loss(self):
+		def get_val_loss(self):
 				return np.array(self.val_loss)
 
-		def val_acc(self):
+		def get_val_acc(self):
 				return np.array(self.val_acc)
+
+
+def visualize_training_steps(history, path):
+    if not os.path.exists(os.path.dirname(path)):
+        os.makedirs(os.path.dirname(path))
+    
+    epochs = np.arange(1, len(history.get_train_loss())+1)
+    plt.figure(figsize=(24, 8))
+    plt.subplot(1, 2, 1)
+    plt.plot(epochs, history.get_train_loss(), label="Train loss")
+    plt.plot(epochs, history.get_val_loss(), label="Validation loss")
+    plt.xlabel("epoch")
+    plt.ylabel("loss")
+    plt.legend(loc="best")
+    plt.grid(True)
+    
+    plt.subplot(1, 2, 2)
+    plt.plot(epochs, history.get_train_acc(), label="Train Accuracy")
+    plt.plot(epochs, history.get_val_acc(), label="Validation Accuracy")
+    plt.xlabel("epoch")
+    plt.ylabel("accuracy")
+    plt.legend(loc="best")
+    plt.grid(True)
+    
+    plt.savefig(path)

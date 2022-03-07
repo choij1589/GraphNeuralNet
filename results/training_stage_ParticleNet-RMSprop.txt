@@ -1,4 +1,4 @@
-@@@@@ Start training GCN-Adam...
+@@@@@ Start training ParticleNet-RMSprop...
 [EPOCH 0]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 1]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 2]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
@@ -28,7 +28,7 @@
 [EPOCH 26]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 27]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 28]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
-[EPOCH 29]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
+[EPOCH 29]	Train Acc: 0.5053	Train Loss: 0.0033	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 30]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 31]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 32]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
@@ -70,7 +70,7 @@
 [EPOCH 68]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 69]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 70]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
-[EPOCH 71]	Train Acc: 0.5053	Train Loss: 0.0033	Valid Acc: 0.4975	Valid Loss: 0.0033
+[EPOCH 71]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 72]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 73]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 74]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
@@ -103,7 +103,7 @@
 [EPOCH 101]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 102]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 103]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
-[EPOCH 104]	Train Acc: 0.5053	Train Loss: 0.0033	Valid Acc: 0.4975	Valid Loss: 0.0033
+[EPOCH 104]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 105]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 106]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033
 [EPOCH 107]	Train Acc: 0.5053	Train Loss: 0.0032	Valid Acc: 0.4975	Valid Loss: 0.0033

@@ -1,0 +1,37 @@
+@@@@@ Start training ParticleNet-Adadelta...
+[EPOCH 0]	Train Acc: 0.6756	Train Loss: 0.0025	Valid Acc: 0.6725	Valid Loss: 0.0025
+[EPOCH 1]	Train Acc: 0.7383	Train Loss: 0.0022	Valid Acc: 0.7425	Valid Loss: 0.0022
+[EPOCH 2]	Train Acc: 0.7549	Train Loss: 0.0022	Valid Acc: 0.7635	Valid Loss: 0.0022
+[EPOCH 3]	Train Acc: 0.7966	Train Loss: 0.0020	Valid Acc: 0.7925	Valid Loss: 0.0020
+[EPOCH 4]	Train Acc: 0.7723	Train Loss: 0.0021	Valid Acc: 0.7660	Valid Loss: 0.0021
+[EPOCH 5]	Train Acc: 0.7803	Train Loss: 0.0021	Valid Acc: 0.7760	Valid Loss: 0.0021
+[EPOCH 6]	Train Acc: 0.7886	Train Loss: 0.0021	Valid Acc: 0.7760	Valid Loss: 0.0021
+[EPOCH 7]	Train Acc: 0.7614	Train Loss: 0.0022	Valid Acc: 0.7635	Valid Loss: 0.0022
+[EPOCH 8]	Train Acc: 0.7796	Train Loss: 0.0021	Valid Acc: 0.7755	Valid Loss: 0.0021
+[EPOCH 9]	Train Acc: 0.8069	Train Loss: 0.0020	Valid Acc: 0.7980	Valid Loss: 0.0020
+[EPOCH 10]	Train Acc: 0.7967	Train Loss: 0.0020	Valid Acc: 0.7865	Valid Loss: 0.0021
+[EPOCH 11]	Train Acc: 0.8100	Train Loss: 0.0020	Valid Acc: 0.7960	Valid Loss: 0.0020
+[EPOCH 12]	Train Acc: 0.7931	Train Loss: 0.0020	Valid Acc: 0.7715	Valid Loss: 0.0021
+[EPOCH 13]	Train Acc: 0.8253	Train Loss: 0.0019	Valid Acc: 0.8035	Valid Loss: 0.0020
+[EPOCH 14]	Train Acc: 0.8088	Train Loss: 0.0020	Valid Acc: 0.7905	Valid Loss: 0.0021
+[EPOCH 15]	Train Acc: 0.8089	Train Loss: 0.0020	Valid Acc: 0.7910	Valid Loss: 0.0021
+[EPOCH 16]	Train Acc: 0.8196	Train Loss: 0.0019	Valid Acc: 0.7995	Valid Loss: 0.0020
+[EPOCH 17]	Train Acc: 0.8280	Train Loss: 0.0019	Valid Acc: 0.7990	Valid Loss: 0.0020
+[EPOCH 18]	Train Acc: 0.8409	Train Loss: 0.0019	Valid Acc: 0.8095	Valid Loss: 0.0020
+[EPOCH 19]	Train Acc: 0.8514	Train Loss: 0.0018	Valid Acc: 0.8105	Valid Loss: 0.0020
+[EPOCH 20]	Train Acc: 0.8176	Train Loss: 0.0020	Valid Acc: 0.7845	Valid Loss: 0.0021
+[EPOCH 21]	Train Acc: 0.8267	Train Loss: 0.0019	Valid Acc: 0.8020	Valid Loss: 0.0020
+[EPOCH 22]	Train Acc: 0.8149	Train Loss: 0.0020	Valid Acc: 0.7940	Valid Loss: 0.0021
+[EPOCH 23]	Train Acc: 0.8522	Train Loss: 0.0018	Valid Acc: 0.8165	Valid Loss: 0.0020
+[EPOCH 24]	Train Acc: 0.8258	Train Loss: 0.0019	Valid Acc: 0.7960	Valid Loss: 0.0020
+[EPOCH 25]	Train Acc: 0.8261	Train Loss: 0.0019	Valid Acc: 0.8060	Valid Loss: 0.0020
+[EPOCH 26]	Train Acc: 0.8210	Train Loss: 0.0020	Valid Acc: 0.7955	Valid Loss: 0.0020
+[EPOCH 27]	Train Acc: 0.8519	Train Loss: 0.0018	Valid Acc: 0.8130	Valid Loss: 0.0020
+[EPOCH 28]	Train Acc: 0.8416	Train Loss: 0.0019	Valid Acc: 0.8105	Valid Loss: 0.0020
+[EPOCH 29]	Train Acc: 0.8123	Train Loss: 0.0020	Valid Acc: 0.7865	Valid Loss: 0.0021
+[EPOCH 30]	Train Acc: 0.8539	Train Loss: 0.0018	Valid Acc: 0.8130	Valid Loss: 0.0020
+[EPOCH 31]	Train Acc: 0.8332	Train Loss: 0.0019	Valid Acc: 0.7935	Valid Loss: 0.0020
+[EPOCH 32]	Train Acc: 0.8421	Train Loss: 0.0019	Valid Acc: 0.7990	Valid Loss: 0.0020
+[EPOCH 33]	Train Acc: 0.8657	Train Loss: 0.0018	Valid Acc: 0.8165	Valid Loss: 0.0020
+[EPOCH 34]	Train Acc: 0.8532	Train Loss: 0.0018	Valid Acc: 0.8095	Valid Loss: 0.0020
+Early stopping in epoch 34
